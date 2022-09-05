@@ -86,7 +86,7 @@ print(result - y_test)
 print("-------------------------------------------------------------------------------------------------------------------")
 
 
-""" print("\nPREDICTION 1")
+print("\nPREDICTION 1")
 print("-------------------------------------------------------------------------------------------------------------------")
 pred_x1 = float(input("Enter house age: "))
 pred_x2 = float(input("Enter house latitude: "))
@@ -117,4 +117,3 @@ pred3_x4 = np.array([pred3_x1, pred3_x2, pred3_x3])
 prediction3 = pred3_x4.dot(m) + b
 print("\nThe prediction is: {}\n".format(prediction3))
 print("-------------------------------------------------------------------------------------------------------------------")
- """
