@@ -27,6 +27,7 @@ def gradient_descent (x, y):
 
 df = pd.read_csv('Fish.csv')
 df = df.drop(['Species'], axis=1)
+#df = (df - df.mean()) / df.std()
 print("\n\n\nTESTS\n\n\n")
 print("TEST 1")
 print("-------------------------------------------------------------------------------------------------------------------")
@@ -36,7 +37,7 @@ df_train = df.drop(df_test.index)
 x_train = df_train.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_train = x_train.to_numpy()
 y_train = df_train['Weight'].to_numpy()
-m, b, acum_loss = gradient_descent(x_train, y_train)
+m, b, _ = gradient_descent(x_train, y_train)
 
 x_test = df_test.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_test = x_test.to_numpy()
@@ -45,10 +46,13 @@ y_test = df_test['Weight'].to_numpy()
 result = x_test.dot(m) + b
 print("\nDifference between every value of y and the prediction:\n")
 print(result - y_test)
+""" plt.plot(acum_loss)
+plt.title("Raíz del error cuadrático medio en cada época")
+plt.show() """
 print("-------------------------------------------------------------------------------------------------------------------")
 
 
-""" print("\nTEST 2")
+print("\nTEST 2")
 print("-------------------------------------------------------------------------------------------------------------------")
 df_test = df.sample(frac=0.20, random_state=55)
 df_train = df.drop(df_test.index)
@@ -56,7 +60,7 @@ df_train = df.drop(df_test.index)
 x_train = df_train.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_train = x_train.to_numpy()
 y_train = df_train['Weight'].to_numpy()
-m, b = gradient_descent(x_train, y_train)
+m, b, _ = gradient_descent(x_train, y_train)
 
 x_test = df_test.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_test = x_test.to_numpy()
@@ -77,7 +81,7 @@ df_train = df.drop(df_test.index)
 x_train = df_train.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_train = x_train.to_numpy()
 y_train = df_train['Weight'].to_numpy()
-m, b = gradient_descent(x_train, y_train)
+m, b, _ = gradient_descent(x_train, y_train)
 
 x_test = df_test.drop(['Weight', 'Length2', 'Length3'], axis=1)
 x_test = x_test.to_numpy()
@@ -117,13 +121,13 @@ print("-------------------------------------------------------------------------
 
 print("\nPREDICTION 3")
 print("-------------------------------------------------------------------------------------------------------------------")
-pred_x1 = 32.8
+pred_x1 = 43.2
 print("Fish length: {}".format(pred_x1))
-pred_x2 = 16.51
+pred_x2 = 7.792
 print("Fish height: {}".format(pred_x2))
-pred_x3 = 5.85
+pred_x3 = 4.87
 print("Fish width: {}".format(pred_x3))
 pred_x4 = np.array([pred_x1, pred_x2, pred_x3])
 prediction = pred_x4.dot(m) + b
 print("\nThe prediction is: {}\n".format(prediction))
-print("-------------------------------------------------------------------------------------------------------------------") """
+print("-------------------------------------------------------------------------------------------------------------------")
